@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% block title %}Main Page{% endblock %}
+{% block content %}
+<h1>Story 1</h1>
+<form action="/story1_result">
+    <label for="place">Place:</label>
+    <input type="text" id="place" name="place" required>
+
+    <label for="noun">Noun:</label>
+    <input type="text" id="noun" name="noun" required>
+
+    <label for="verb">Verb:</label>
+    <input type="text" id="verb" name="verb" required>
+
+    <label for="adjective">Adjective:</label>
+    <input type="text" id="adjective" name="adjective" required>
+
+    <label for="plural_noun">Plural Noun:</label>
+    <input type="text" id="plural_noun" name="plural_noun" required>
+
+    <button>Submit!</button>
+</form>
+{% endblock %}
