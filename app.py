@@ -1,7 +1,12 @@
 from flask import Flask, request, render_template
-import stories
+from stories import Story 
+from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'whatever_my_secret_key_is' #this is a secret key that is used to encrypt the session cookie
+debug = DebugToolbarExtension(app)
+
 
 @app.route('/')
 def home_page():
@@ -16,16 +21,13 @@ def story1():
 @app.route('/story1_result')
 def story1_result():
     """Show story 1 result."""
-    place = request.args['place']
-    noun = request.args['noun']
-    verb = request.args['verb']
-    adjective = request.args['adjective']
-    plural_noun = request.args['plural_noun']
+    place = request.args.get('place')
+    noun = request.args.get('noun')
+    verb = request.args.get('verb')
+    adjective = request.args.get('adjective')
+    plural_noun = request.args.get('plural_noun')
 
-    story = stories.story
-    text = story.generate({"place": place, "noun": noun, "verb": verb, "adjective": adjective, "plural_noun": plural_noun})
-
-    return render_template('story1_result.html', text=text)
+    return render_template('story1_result.html', place=place, noun=noun, verb=verb, adjective=adjective, plural_noun=plural_noun)
 
 
 
@@ -38,16 +40,13 @@ def story2():
 @app.route('/story2_result')
 def story2_result():
     """Show story 2 result."""
-    place = request.args['place']
-    noun = request.args['noun']
-    verb = request.args['verb']
-    adjective = request.args['adjective']
-    plural_noun = request.args['plural_noun']
+    place = request.args.get('place')
+    noun = request.args.get('noun')
+    verb = request.args.get('verb')
+    adjective = request.args.get('adjective')
+    plural_noun = request.args.get('plural_noun')
 
-    story = stories.story
-    text = story.generate({"place": place, "noun": noun, "verb": verb, "adjective": adjective, "plural_noun": plural_noun})
-
-    return render_template('story2_result.html', text=text)
+    return render_template('story2_result.html', place=place, noun=noun, verb=verb, adjective=adjective, plural_noun=plural_noun)
 
 
 
@@ -60,15 +59,12 @@ def story3():
 @app.route('/story3_result')
 def story3_result():
     """Show story 3 result."""
-    place = request.args['place']
-    noun = request.args['noun']
-    verb = request.args['verb']
-    adjective = request.args['adjective']
-    plural_noun = request.args['plural_noun']
+    place = request.args.get('place')
+    noun = request.args.get('noun')
+    verb = request.args.get('verb')
+    adjective = request.args.get('adjective')
+    plural_noun = request.args.get('plural_noun')
 
-    story = stories.story
-    text = story.generate({"place": place, "noun": noun, "verb": verb, "adjective": adjective, "plural_noun": plural_noun})
-
-    return render_template('story3_result.html', text=text)
+    return render_template('story3_result.html', place=place, noun=noun, verb=verb, adjective=adjective, plural_noun=plural_noun)
 
 
